@@ -1,123 +1,137 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<HTML>
-<HEAD>
-  <TITLE>XML Stream Buffer Project</TITLE>
-  <link rel="alternate" type="application/rss+xml" href="/servlets/ProjectNewsRSS">
-  <style>
-      .app H3 {
-        clear: none;
-      }
-      .axial {
-        display: none;
-      }
-      #apphead {
-        display: none;
-      }
-    .floatbox {
-      width:190px;
-      
-      // background:rgb(254,236,219);
-      background:rgb(238,238,238);
-      margin-top: 1em;
-      padding: 5px;
-      // border: 1px solid rgb(252,142,37);
-      border: 1px solid rgb(170,170,170);
-    }
-  </style>
-</HEAD>
-<BODY>
+<html>
+<head>
+    <style>
+        .app H3 {
+            clear: none;
+        }
 
-<script>
-// kill "description" h3 bar
-ld = document.getElementById("longdescription");
-for( n=ld.firstChild; n!=null; n=n.nextSibling ) {
-  if(n.nodeType==1 && n.innerHTML=="Description" ) {
-    n.parentNode.removeChild(n);
-    break;
-  }
-}
-</script>
+        .axial {
+            display: none;
+        }
 
-<TABLE  border="0" width="100%">
-    <TR>
-	<TD>
-	    <P><IMG SRC="https://jaxb.dev.java.net/images/glassfish_logo.gif" ALIGN=MIDDLE></TD>
-	<TD>
-	    <H1>XML Stream Buffer Project</H1>
-	    Part of <a href="http://glassfish.dev.java.net">Project GlassFish</a>
-	    and <a href="https://jax-ws.dev.java.net/">JAX-WS</a> in the <a href="http://jwsdp.dev.java.net/index.html">JWSDP subcommunity</a>
-	</TD>
-	<td width="*">
-	    <div align=right>
-		<a href="/servlets/ProjectNewsRSS"><img src="/images/rss1.gif" border="0"></a><br>
-	    <small>
-		(<a href="http://wiki.java.net/bin/view/Javawsxml/RssCorner">new to RSS?</a>)
-	    </small>
-	    </div>
-	</td>
-    </TR>
-</TABLE>
+        #apphead {
+            display: none;
+        }
 
+        #helptext {
+            display: none;
+        }
 
-<P>This project defines a stream-based representation, a stream
-buffer, of an XML infoset in Java and mechanisms to create and
-processs stream buffers using standard XML APIs.</P>
-<H3>Overview</H3>
-<UL>
-	<LI><STRONG>Standards Supported:</STRONG> 
-	<UL>
-		<LI>SAX<LI>
-		StAX</UL>
-	<LI><STRONG>Status:</STRONG> Prototype 
-        <li><strong>Licenses:</strong> Dual license consisting of the
-        <a href="https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html">
-        CDDL v1.1 and GPL v2</a>.
-        </li>
-        <li><strong>Governance:</strong> <a href="https://glassfish.dev.java.net/public/GovernancePolicy.html">Same as Project GlassFish</a></li>
-	<LI><STRONG><A HREF="Goals">Goals</A></STRONG>
-	<LI><STRONG>Project News: </STRONG>
-	<A HREF="/servlets/ProjectNewsRSS"><IMG SRC="images/rss1.gif" NAME="Graphic2" ALIGN=BOTTOM WIDTH=80 HEIGHT=15 BORDER=0></A>
-	(see <A HREF="http://wiki.java.net/bin/view/Javawsxml/RssCorner">RSS</A>)
+        #searchbox {
+            display: none;
+        }
 
-</UL>
-<H3>Introduction</H3>
-<P>A stream buffer is a stream-based representation of an XML infoset
-in Java. Stream buffers are designed to: provide very efficient
-stream-based memory representations of XML infosets; and be created and
-processed using any Java-based XML API.</P>
-<P>Conceptually a stream buffer is similar to the representation used
-in the Xerces deferred DOM implementation, with the crucial
-difference that a stream buffer does not store hierarchal information
-like parent and sibling information. The deferred DOM implementation
-reduces memory usage when large XML documents are parsed but only a
-subset of the document needs to be processed. (Note that using
-deferred DOM will be more expensive than non-deferred DOM in terms
-of memory and processing if all the document is traversed.)</P>
-<P>Stream buffers may be used as an efficient alternative to DOM
-where:</P>
-<UL>
-	<LI><P>most or all of an XML infoset will eventually get traversed;
-	and/or 
-	</P>
-	<LI><P>targeted access to certain parts of an XML infoset are
-	required and need to be efficiently processed using stream-based
-	APIs like SAX or StAX.</P>
-</UL>
-<H3><A NAME="Goals"></A>Goals</H3>
-<UL>
-	<LI><P>Design a very efficient stream-based memory representation of
-	XML infosets;</P>
-	<LI><P>Create and process stream buffers using the standard
-	Java-based XML APIs SAX, StAX and DOM;</P>
-	<LI><P>Mark fragments of an XML infoset when creating a stream
-	buffer for targeted processing of fragments. Fragments can be
-	accessed directly rather than sequentially and can be streamed
-	independently of the whole stream. Such marking could be achieved
-	for elements that have attributes of type ID, explicitly specified
-	elements or simple linear XPath expressions.</P>
-	<LI><P>Remove or replace marked fragments;</P>
-</UL>
-<H3>Current status</H3>
-<P></P>
-</BODY>
-</HTML>
+        #download-icon {
+            text-align: center;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            background-color: white;
+        }
+
+	#subprojects {
+		display: none;
+	}
+
+        .floatbox {
+            width: 190px;
+
+        / / background : rgb ( 254, 236, 219 );
+            background: rgb( 238, 238, 238 );
+            margin-top: 1em;
+            padding: 5px;
+        / / border : 1 px solid rgb ( 252, 142, 37 );
+            border: 1px solid rgb( 170, 170, 170 );
+        }
+
+        #creditfooter IMG {
+            display: none;
+        }
+
+    </style>
+    <title>XML Stream Buffer Project</title>
+</head>
+<body>
+
+    <div align="left">
+        <table valign="middle" class="directory" border="0">
+            <tbody>
+                <tr>
+                    <table border="0" class="icon"><tbody>
+                        <tr>
+                            <td>
+                                    <a href="http://maven.java.net/content/repositories/releases/com/sun/xml/stream/buffer/streambuffer/"><img src="images/download.png" class="logo"></a>
+                            </td>
+                            <td>
+                                    <a href="http://java.net/projects/xmlstreambuffer/lists"><img src="images/communicate.gif" class="logo"></a>
+                            </td>
+                            <td>
+                                    <a href="http://java.net/projects/xmlstreambuffer/sources/svn/show/trunk"><img src="images/extend.gif" class="logo"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: bold">
+                                    <a href="http://maven.java.net/content/repositories/releases/com/sun/xml/stream/buffer/streambuffer/"><div class="title">Download</div></a>
+                            </td>
+                            <td style="text-align: center; font-weight: bold">
+                                    <a href="http://java.net/projects/xmlstreambuffer/lists"><div class="title">Communicate</div></a>
+                            </td>
+                            <td style="text-align: center; font-weight: bold">
+                                    <a href="http://java.net/projects/xmlstreambuffer/sources/svn/show/trunk"><div class="title">Contribute</div></a>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class=app>
+        <p>Welcome to the XML Stream Buffer project. This project defines a stream-based representation, a stream buffer, of an XML infoset in 
+            Java and mechanisms to create and processs stream buffers using standard XML APIs. Supports SAX and StAX.
+        </p>
+        <ul>
+            <li><strong>License:</strong> <a href="http://glassfish.java.net/public/CDDL+GPL_1_1.html"> CDDL v1.1 and GPL v2</a></li>
+            <li><strong>Status:</strong> Production Quality
+            <li><strong>Governance:</strong> <a href="http://glassfish.java.net/public/GovernancePolicy.html">Same as Project GlassFish</a></li>
+        </ul>
+        <p>
+            <h2>Introduction</h2>
+                <P>A stream buffer is a stream-based representation of an XML infoset
+                in Java. Stream buffers are designed to provide very efficient
+                stream-based memory representations of XML infosets, and be created and
+                processed using any Java-based XML API.</P>
+                <P>Conceptually a stream buffer is similar to the representation used
+                in the Xerces deferred DOM implementation, with the crucial
+                difference that a stream buffer does not store hierarchal information
+                like parent and sibling information. The deferred DOM implementation
+                reduces memory usage when large XML documents are parsed but only a
+                subset of the document needs to be processed. (Note that using
+                deferred DOM will be more expensive than non-deferred DOM in terms
+                of memory and processing if all the document is traversed.)</P>
+                <P>Stream buffers may be used as an efficient alternative to DOM
+                where:</P>
+                <UL>
+                    <LI>most or all of an XML infoset will eventually get traversed and/or</li> 
+                    <LI>targeted access to certain parts of an XML infoset are
+                    required and need to be efficiently processed using stream-based
+                    APIs like SAX or StAX.</li>
+                </UL>
+            <h2>Goals</h2>
+            <ul>
+                <LI><P>Design a very efficient stream-based memory representation of
+                XML infosets;</P>
+                <LI><P>Create and process stream buffers using the standard
+                Java-based XML APIs SAX, StAX and DOM;</P>
+                <LI><P>Mark fragments of an XML infoset when creating a stream
+                buffer for targeted processing of fragments. Fragments can be
+                accessed directly rather than sequentially and can be streamed
+                independently of the whole stream. Such marking could be achieved
+                for elements that have attributes of type ID, explicitly specified
+                elements or simple linear XPath expressions.</P>
+                <LI><P>Remove or replace marked fragments;</P>
+            </ul>
+
+    </div>
+</body>
+</html>
+
